@@ -41,7 +41,7 @@ const moveToCart = (e) => {
 
 const bindEvents = () => {
   // can avoid using .on because it's on the index.html
-  $('button.add').click(moveToCart);
+  $('button.add').on('click', moveToCart);
 
   // going to write a function called filterFish so pass it through now
   $('button#show-sale').click(() => {
@@ -50,4 +50,6 @@ const bindEvents = () => {
   });
 };
 
-module.exports = bindEvents;
+module.exports = {
+  bindEvents,
+};
