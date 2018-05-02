@@ -2,8 +2,11 @@ const discount = 0.2;
 
 const applySale = () => {
   // iterate through jQuery list of dom nodes
+  // parameters-- i is expected by jQuery and fishCard is a placeholder
+  // querying by class .on-sale
   $('.on-sale').each((i, fishCard) => {
     // will iterate through all fishCards
+
     const basePriceElem = $(fishCard).find('.price');
     // base price that comes back is html element
     // we need to get what's inside of it, will come back as text

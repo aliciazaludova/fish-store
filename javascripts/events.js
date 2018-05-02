@@ -35,11 +35,25 @@ const moveToCart = (e) => {
   const fishCard = $(e.target).closest('.fish');
   console.log('fishCard', fishCard);
   $('#snagged').append(fishCard);
+  // need to reference removeFromCart on button; change the text of the button
+  $(e.target).text('Remove from Cart');
+  // text has changed above but still has old event listener on it
+  $(e.target).on('click', removeFromCart);
+};
 
-  // *passing in $('btn') won't work
+const removeFromCart = (e) => {
+  const fishCard = $(e.target).closest('.fish'); // targets parent
+  $('#available').append(fishCard);
+  $(e.target).text('Add to Cart');
+  // we have conflicting events happening because old event is not just replaced
+  $(e.target).on('click', moveToCart);
+
 };
 
 const bindEvents = () => {
+  // // comment this out until next commit--look at inclass repo
+  // $('body').on('click', '.remove', removeFromCart);
+  // $('body').on('click', '.add', removeFromCart);
   // can avoid using .on because it's on the index.html
   $('button.add').on('click', moveToCart);
 
